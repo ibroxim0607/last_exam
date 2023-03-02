@@ -1,0 +1,10 @@
+@import "reset";
+
+$header-default-height: 100px;
+@import "header";
+
+.container{
+  max-width: 1028px;
+  margin: auto;
+  background-color: gray;
+}
