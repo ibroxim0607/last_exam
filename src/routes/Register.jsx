@@ -7,14 +7,16 @@ import instance from '../api/instance';
 import { auth, provider } from '../firebase/firebaseconfig';
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+
   const createAccountWithGoogle = () => {
     auth.signInWithPopup(provider)
       .then(response => console.log(response))
       .catch(err => console.log(err))
   }
 
-  const dispatch = useDispatch();
-  const history = useHistory();
   const [formData, setFormData] = useState({
     name: "",
     email: "",

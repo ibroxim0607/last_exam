@@ -9,24 +9,20 @@ import i18n from '../../language/i18next'
 
 const Header = () => {
   const { t } = useTranslation();
-
   const location = useLocation();
-
-  const createUserData = useSelector(state => state.createReducer)
+  const createUserData = useSelector(state => state)
   console.log(createUserData);
 
   return location.pathname === "/signin" ? <></> : (
-
-
     <header>
       <div className="header-left">
         <h2 className='header-hi'>Hi,
         {
           createUserData ? createUserData : <strong>
           <Link to="/signin"> Sign In </Link>
-         or
-         <Link to="/register"> register </Link>
-         </strong>
+             or
+          <Link to="/register"> register </Link>
+        </strong>
         }
         </h2>
         <ul className='header_nav'>

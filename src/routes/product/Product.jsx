@@ -1,15 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useFetchData from '../../hooks/useFetchData';
 import './Product.scss';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Search from '../../components/search/Search';
 import { useTranslation } from 'react-i18next';
+import { BsFillSuitHeartFill } from 'react-icons/bs';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'
+import instance from '../../api/instance';
 
 const Product = () => {
   const { t } = useTranslation();
+  const productIdData = useParams();
+  const [categoryData, setCategoryData] = useState([]);
 
   const productData = useParams();
   const data = useFetchData(`/products/${productData.id}`)
+
+  function trimDescription (str){
+    return str.split(" ").splice(0, 10).join(" ") + "..."
+  }
+
+  useEffect(() => {
+    instance.get(`/products/?categoryId=${productIdData.id}`)
+      .then(response => {
+        setCategoryData(response.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [data?.category?.id])
   return (
     <section>
       <Search/>
@@ -58,6 +78,41 @@ const Product = () => {
               </div>
             </div>
           </div>
+        </div>
+
+
+        <div className='swiper-boxxx'>
+          <Swiper
+          spaceBetween={50}
+          slidesPerView={5}
+          onSlideChange={() => console.log('slide change')}
+          onSwiper={(swiper) => console.log(swiper)}
+          >
+            {
+              categoryData?.map(product =>
+                <SwiperSlide>
+                  <div className='product-item' key={product.id}>
+                    <Link key={product.id} to={`/product/${product.id}`}>
+                      {
+                        product.images[0] && product.images[0].startsWith("https://") ?
+                        <img className='product-item_image' src={product.images[0]} alt="" />
+                        :
+                        <img className='prodyct-item_image' src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="" />
+                      }
+                      <h3>{product.title}</h3>
+                    </Link>
+                    <div className='product-info'>
+                      <div>
+                        <p>{trimDescription(product.description)}</p>
+                        <strong>${product.price}</strong>
+                      </div>
+                      <BsFillSuitHeartFill/>
+                    </div>
+                  </div>
+                </SwiperSlide>
+              )
+            }
+          </Swiper>
         </div>
       </div>
     </section>
