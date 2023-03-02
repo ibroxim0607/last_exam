@@ -10,7 +10,8 @@ import i18n from '../../language/i18next'
 const Header = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const createUserData = useSelector(state => state)
+  const createUserData = useSelector(state => state.registerReducer.email);
+  const {likedProducts} = useSelector(state => state.likeReducer)
   console.log(createUserData);
 
   return location.pathname === "/signin" ? <></> : (
@@ -74,7 +75,7 @@ const Header = () => {
         </select>
 
         <Link to="like">
-          <FiHeart className='header-like'/>
+            <FiHeart className='header-like'/>
         </Link>
 
         <Link to="cart">

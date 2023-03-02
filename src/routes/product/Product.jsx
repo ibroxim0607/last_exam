@@ -30,6 +30,7 @@ const Product = () => {
         console.log(err)
       })
   }, [data?.category?.id])
+
   return (
     <section>
       <Search/>
@@ -79,9 +80,10 @@ const Product = () => {
             </div>
           </div>
         </div>
+      </div>
 
-
-        <div className='swiper-boxxx'>
+      <div className='swiper-boxxx'>
+          <h2 className='swiper-title'>Sponsored items customers also bought Feedback on our suggestions</h2>
           <Swiper
           spaceBetween={50}
           slidesPerView={5}
@@ -93,18 +95,14 @@ const Product = () => {
                 <SwiperSlide>
                   <div className='product-item' key={product.id}>
                     <Link key={product.id} to={`/product/${product.id}`}>
-                      {
-                        product.images[0] && product.images[0].startsWith("https://") ?
-                        <img className='product-item_image' src={product.images[0]} alt="" />
-                        :
-                        <img className='prodyct-item_image' src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png" alt="" />
-                      }
-                      <h3>{product.title}</h3>
+                      <img src={product.images} alt="" />
+                      <h3 className='product-title'>{product.title}</h3>
                     </Link>
                     <div className='product-info'>
                       <div>
-                        <p>{trimDescription(product.description)}</p>
-                        <strong>${product.price}</strong>
+                        <p className='product-desc'>{trimDescription(product.description)}</p>
+                        <strong className='product-price'>${product.price}</strong>
+                        <p className='product-word'>Free shipping</p>
                       </div>
                       <BsFillSuitHeartFill/>
                     </div>
@@ -114,7 +112,6 @@ const Product = () => {
             }
           </Swiper>
         </div>
-      </div>
     </section>
   )
 }

@@ -5,6 +5,7 @@ import Sign from '../routes/Sign';
 import Register from '../routes/Register';
 import Category from './category/Category';
 import Product from './product/Product';
+import Like from './like/Like';
 
 const index = () => {
   return (
@@ -17,6 +18,9 @@ const index = () => {
       </Route>
       <Route path="/product/:id">
         <Product/>
+      </Route>
+      <Route path="/like">
+        <Like/>
       </Route>
       <Route path="/register">
         <Register/>

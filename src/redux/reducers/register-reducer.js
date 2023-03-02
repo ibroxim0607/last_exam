@@ -2,7 +2,7 @@ const initialState = {
   email: ""
 }
 
-const mainReducer = (state, action) => {
+const registerReducer = (state = initialState, action) => {
   // get data
   switch(action.type){
     case "CREATE_USER":
@@ -12,4 +12,4 @@ const mainReducer = (state, action) => {
   }
 }
 
-export default mainReducer;
+export default registerReducer;
