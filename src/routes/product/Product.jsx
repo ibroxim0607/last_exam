@@ -82,38 +82,58 @@ const Product = () => {
         </div>
       </div>
 
-      <div className='swiper-boxxx'>
-          <h2 className='swiper-title'>Sponsored items customers also bought Feedback on our suggestions</h2>
-          <Swiper
-          spaceBetween={50}
-          slidesPerView={5}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-          >
-            {
-              categoryData?.map(product =>
-                <SwiperSlide>
-                  <div className='product-item' key={product.id}>
-                    <Link key={product.id} to={`/product/${product.id}`}>
-                      <img src={product.images} alt="" />
-                      <h3 className='product-title'>{product.title}</h3>
-                    </Link>
-                    <div className='product-info'>
-                      <div>
-                        <p className='product-desc'>{trimDescription(product.description)}</p>
-                        <strong className='product-price'>${product.price}</strong>
-                        <p className='product-word'>Free shipping</p>
-                      </div>
-                      <BsFillSuitHeartFill/>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              )
-            }
-          </Swiper>
+      <footer className='footer'>
+        <div className='footer-top'>
+          <div className='top-left'>
+            <div className='top-left_img'>
+              <img src="https://s3-alpha-sig.figma.com/img/bae9/ef80/df508e1aa9c6b65f8ee6a17e3979c2e5?Expires=1678665600&Signature=I2Ud9w-Chzbi70~HMaAEVCIOm-RixoX1VlYxqHE0Vtyea-eO1r1XwwNk94tJ7zCbFmAGZOPy8oaDR59BfTio24a2Gbb6WoGTweSc4gY~nEbw6Ioo2IGAW1ijecL7YkgpipbQbUY09lDuSKvmMI7dY4nP60n~b9lmIfyqhRbLRCilMfrsOJVQ8gcmS49A4POae~vn8daLgXoWEz9HKblSMV-Ne8a3Kp5KCIChRu8zRoksLJC5NcLLdF5mnNJH9YOXNckatSRqBghV6~BOFpqTBw-xsB14QIz06L9TltShmAdZCuzWJHTvyCbnYDY7Sd1Eblg0JdB-J0AHcHSUqy3rFQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="" />
+            </div>
+              <h1 className='h1'>Tech Hobbies</h1>
+              <p className='first-p'><strong>99.7% </strong>Positive Feedback</p>
+              <p className='second-p'><strong>21K </strong>Items sold</p>
+          </div>
+          <div className='top-right'>
+            <button className='visit-btn'>Visit store</button>
+            <button className='contact-btn'>Contact</button>
+          </div>
         </div>
+
+        <div className='footer-bottom'>
+          <div className='bottom-left'>
+            <h2 className='left-title'>Detailed seller ratings</h2>
+            <h4 className='p'>Average for the last 12 months</h4>
+            <h4 className='p-2'>Accurate description</h4>
+            <h4 className='default'>Reasonable shipping cost</h4>
+            <h4 className='default'>Shipping speed</h4>
+            <h4 className='default'>Communication</h4>
+            <h2></h2>
+
+            <h2 className='bottom-title'>Popular categories from this store</h2>
+            <p className='bottom-p'>Cell Phones & Accessories</p>
+          </div>
+        </div>
+
+
+        <div className='last-footer'>
+          <div className='last-top'>
+            <ul className='top-ul'>
+              <li>About eBay, </li>
+              <li>Announcements, </li>
+              <li>Community, </li>
+              <li>Security Center, </li>
+              <li>Seller Center, </li>
+              <li>Policies, </li>
+              <li>Affiliates, </li>
+              <li>Help & Contact, </li>
+              <li>Site Map</li>
+            </ul>
+          </div>
+          <div className='last-end'>
+            <p className='last-text'><strong>Copyright © 1995-2023 eBay Inc. All Rights Reserved. </strong> Accessibility, User Agreement, Privacy, Payments Terms of Use, Cookies, Your Privacy Choices and AdChoice</p>
+          </div>
+        </div>
+      </footer>
     </section>
   )
 }
-
 export default Product
